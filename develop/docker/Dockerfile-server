@@ -10,9 +10,10 @@ RUN apt-get install -y \
     build-essential \
     vim \
     mysql-client
+
     
 RUN apt-get install debian-keyring debian-archive-keyring \
-  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1655A0AB68576280 \
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50 \
   && apt-key update \
   && apt-get update
 # Install node from nodesource
