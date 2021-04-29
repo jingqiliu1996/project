@@ -53,7 +53,7 @@ services:
     links:
       - db
     environment:
-      DB_USER: root
-      DB_NAME: project
-      DB_PASSWORD: password
-      DB_HOST: db
+      DB_USER: campusflora
+      DB_NAME: campusflora
+      DB_PASSWORD: "@U%?38k&#~j)<0J36(4=T9(?h<u(V"
+      DB_HOST: localhost
