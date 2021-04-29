@@ -1,29 +1,15 @@
 FROM ruby:2.2.0
-
-# Update the package lists before installing.
-RUN apt-get update -qq
-
-# This installs
-# * build-essential because Nokogiri requires gcc
-# * the mysql CLI and client library
-RUN apt-get install -y \
-    build-essential \
-    vim \
-    mysql-client
-    
-RUN apt-get install debian-keyring debian-archive-keyring \
-  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1655A0AB68576280 \
-  && apt-key update \
-  && apt-get update
-# Install node from nodesource
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-  && apt-get install -y nodejs
-
-# Install yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get update -qq \
-  && apt-get install -y yarn
+RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
+  curl \
+  build-essential \
+  libpq-dev
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1655A0AB68576280
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends nodejs yarn
 
 # Create a directory called `/app` and make that the working directory
 ENV APP_HOME /app
