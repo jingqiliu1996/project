@@ -30,6 +30,7 @@ services:
       MYSQL_DATABASE: project
       MYSQL_USER: projectuser
       MYSQL_PASSWORD: password
+      DATABASE_HOST: localhost
     ports:
       - "3307:3306"
   app:
