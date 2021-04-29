@@ -26,19 +26,12 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 5at2=e9=424Ig<#%P2ov2j103Y2eL
-      MYSQL_DATABASE: campusflora
-      MYSQL_USER: campusflora
-      MYSQL_PASSWORD: "@U%?38k&#~j)<0J36(4=T9(?h<u(V"
-      # DATABASE_HOST: localhost
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: project
+      MYSQL_USER: projectuser
+      MYSQL_PASSWORD: password
     ports:
       - "3307:3306"
-    volumes_from:
-      - mysqldata
-  mysqldata:
-    build: 
-      context: .
-      dockerfile: ./docker/Dockerfile-mysql-data
   app:
     build:
       context: .
@@ -53,7 +46,7 @@ services:
     links:
       - db
     environment:
-      DB_USER: campusflora
-      DB_NAME: campusflora
-      DB_PASSWORD: "@U%?38k&#~j)<0J36(4=T9(?h<u(V"
-      DB_HOST: localhost
+      DB_USER: root
+      DB_NAME: project
+      DB_PASSWORD: password
+      DB_HOST: db
