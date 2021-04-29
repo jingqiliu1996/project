@@ -25,7 +25,7 @@ services:
   db:
     image: mysql:5.7
     restart: always
-    environment:
+    # environment:
       # MYSQL_ROOT_PASSWORD: password
       # MYSQL_DATABASE: project
       # MYSQL_USER: projectuser
