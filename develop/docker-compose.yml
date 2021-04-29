@@ -36,8 +36,9 @@ services:
     volumes_from:
       - mysqldata
   mysqldata:
-    build: .
-    dockerfile: ./docker/Dockerfile-mysql-data
+    build: 
+      context: .
+      dockerfile: ./docker/Dockerfile-mysql-data
   app:
     build:
       context: .
